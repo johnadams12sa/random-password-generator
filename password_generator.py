@@ -1,8 +1,9 @@
-#random password generator app
+#Random Password Generator App
 #written by Aaron Yam
 
 import string
 import random
+import pyperclip
 
 lowercase = list(string.ascii_lowercase)
 uppercase = list(string.ascii_uppercase)
@@ -56,3 +57,5 @@ for characters in range(passwordLength):
     password = password + characters
 
 print(password)
+pyperclip.copy(password)
+print("Password has been copied to your clipboard") 
