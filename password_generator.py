@@ -11,8 +11,17 @@ special_characters = list(string.punctuation)
 special_characters_basic = list('!@#$%^&*()"')
 #lists = [lowercase, uppercase, digits, special_characters, special_characters_basic]
 
-passwordLength = eval(input('How many characters are in the password? '))
-passwordOptions = input('What options would you like to include? \n\n \
+try:
+    passwordLength = eval(input('How many characters are in the password? '))
+except SyntaxError:
+    print("Invalid input, non-integer value was entered\n")
+    exit()
+except NameError:
+    print("Invalid input, non-integer value was entered\n")
+    exit()
+
+try:
+    passwordOptions = input('What options would you like to include? \n\n \
 Lowercase    (abc)       (L) \n \
 Uppercase    (ABC)       (U) \n \
 Number       (123)       (N) \n \
@@ -20,6 +29,10 @@ Symbol       (!@#$)      (S) \n \
 Punctuation  (,.{[\\]})   (A) \n \
 SELECT ALL               (Z) \n\n\
 Choice(s): ')
+    if not passwordOptions:
+        raise ValueError("No choices were selected\n")
+except ValueError as e:
+    print(e)
 
 passwordOptions = passwordOptions.replace(" ","").upper()
 enabledOptions = list(passwordOptions)
