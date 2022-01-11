@@ -9,8 +9,7 @@ lowercase = list(string.ascii_lowercase)
 uppercase = list(string.ascii_uppercase)
 digits = list(string.digits)
 special_characters = list(string.punctuation)
-special_characters_basic = list('!@#$%^&*()"')
-#lists = [lowercase, uppercase, digits, special_characters, special_characters_basic]
+special_characters_basic = list('?!@#$%^&*()_+-=')
 
 try:
     passwordLength = eval(input('How many characters are in the password? '))
