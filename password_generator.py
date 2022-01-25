@@ -83,14 +83,15 @@ def generatePassword(userInputValues):
     return
 
 def welcomeMessage():
-    print('The Password Generator App\n\n \
-Options: \n \
-Lowercase    (abc)       (L) \n \
-Uppercase    (ABC)       (U) \n \
-Number       (123)       (N) \n \
-Symbol       (!@#$)      (S) \n \
-Punctuation  (,.{[\\]})   (A) \n \
-SELECT ALL               (Z) \n')
+    #print('The Password Generator App\n\n \
+#Options: \n \
+#Lowercase    (abc)       (L) \n \
+#Uppercase    (ABC)       (U) \n \
+#Number       (123)       (N) \n \
+#Symbol       (!@#$)      (S) \n \
+#Punctuation  (,.{[\\]})   (A) \n \
+#SELECT ALL               (Z) \n')
+    print('The Password Generator App\n\n ')
     return
 
 def main():
