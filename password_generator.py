@@ -1,4 +1,4 @@
-#Random Password Generator App v2.1
+#Random Password Generator App v2.0
 #written by Aaron Yam
 
 import string
@@ -10,6 +10,8 @@ def userInput():
     while(passwordLengthInputBool):
         try:
             passwordLength = eval(input('How many characters are in the password? '))
+            if passwordLength < 0:
+                raise InputValueError
             passwordLengthInputBool = False
         except SyntaxError:
             print("Invalid input, non-integer value was entered\n")
@@ -17,6 +19,8 @@ def userInput():
         except NameError:
             print("\nInvalid input, non-integer value was entered\n")
             continue
+        except InputValueError:
+            print("Invalid input, enter a positive value\n")
 
     passwordOptionsInputBool = True
     while(passwordOptionsInputBool):
@@ -83,7 +87,7 @@ def generatePassword(userInputValues):
     return
 
 def welcomeMessage():
-    #print('The Password Generator App\n\n \
+    print('The Password Generator App\n\n ')
 #Options: \n \
 #Lowercase    (abc)       (L) \n \
 #Uppercase    (ABC)       (U) \n \
@@ -91,7 +95,6 @@ def welcomeMessage():
 #Symbol       (!@#$)      (S) \n \
 #Punctuation  (,.{[\\]})   (A) \n \
 #SELECT ALL               (Z) \n')
-    print('The Password Generator App\n\n ')
     return
 
 def main():
