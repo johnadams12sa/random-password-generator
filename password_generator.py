@@ -97,10 +97,34 @@ def welcomeMessage():
 #SELECT ALL               (Z) \n')
     return
 
+def requestContinuePrompt():
+    requestContinuePromptResponse = eval(input('Generate another password? \n\n ').lower().strip())
+    requestContinueValid = True
+    while requestContinueValid:
+        if not requestContinuePromptResponse:
+            raise ValueError("\nNo choices were selected\n")
+            continue
+        for char in requestContinuePromptResponse:
+            if char.isalpha() != True:
+                raise ValueError("\nAn invalid character was entered\n")
+                continue
+        if requestContinuePromptResponse[0] == 'y':
+            return True
+        else:
+            if requestContinuePromptResponse[0] == 'n':
+                return False
+            else:
+                print("Your input seemed a bit odd, please try again? \n \n")
+            
+
+
 def main():
     welcomeMessage()
-    userInputValues = userInput()
-    generatePassword(userInputValues)
+    continueAppUse = True
+    while(continueAppUse):
+        userInputValues = userInput()
+        generatePassword(userInputValues)
+        continueAppUse = requestContinuePrompt()
     return
 
 if __name__ == "__main__":
