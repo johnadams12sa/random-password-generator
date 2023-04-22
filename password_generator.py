@@ -3,6 +3,7 @@
 
 import string
 import random
+import os
 import pyperclip
 
 def userInput():
@@ -42,7 +43,7 @@ Choice(s): ')
                 if char.isalpha() != True:
                     raise ValueError("\nAn invalid choice was entered\n")
                     continue
-                if char not in ['l','u','n','s','a','z']:
+                if char not in ['l','u','n','s','a','z','L','U','N','S','Z']:
                     raise ValueError("\nAn invalid choice was entered\n")
                     continue
             
@@ -103,7 +104,15 @@ def requestContinuePrompt():
         else:
             print("Your input seemed a bit odd, please try again? \n \n")
             
+def clean():
+    # For Windows
+    if os.name == 'nt':
+        os.system('cls')
 
+
+    # For macOS and Linux
+    else:
+        os.system('clear')
 
 def main():
     welcomeMessage()
@@ -112,6 +121,7 @@ def main():
         userInputValues = userInput()
         generatePassword(userInputValues)
         continueAppUse = requestContinuePrompt()
+        clean()
     return
 
 if __name__ == "__main__":
