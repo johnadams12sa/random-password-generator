@@ -98,23 +98,15 @@ def welcomeMessage():
     return
 
 def requestContinuePrompt():
-    requestContinuePromptResponse = eval(input('Generate another password? \n\n ').lower().strip())
+    requestContinuePromptResponse = eval(input('Generate another password? [Y/N] \n ').lower().strip())
     requestContinueValid = True
     while requestContinueValid:
-        if not requestContinuePromptResponse:
-            raise ValueError("\nNo choices were selected\n")
-            continue
-        for char in requestContinuePromptResponse:
-            if char.isalpha() != True:
-                raise ValueError("\nAn invalid character was entered\n")
-                continue
         if requestContinuePromptResponse[0] == 'y':
             return True
+        elif requestContinuePromptResponse[0] == 'n':
+            return False
         else:
-            if requestContinuePromptResponse[0] == 'n':
-                return False
-            else:
-                print("Your input seemed a bit odd, please try again? \n \n")
+            print("Your input seemed a bit odd, please try again? \n \n")
             
 
 
