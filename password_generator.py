@@ -35,8 +35,6 @@ Punctuation  (,.{[\\]})   (A) \n \
 SELECT ALL               (Z) \n\n\
 Choice(s): ')
 
-            #passwordOptions = input('What options would you like to include? \n\
-#Choice(s): ')
             if not passwordOptions:
                 raise ValueError("\nNo choices were selected\n")
                 continue
@@ -44,6 +42,10 @@ Choice(s): ')
                 if char.isalpha() != True:
                     raise ValueError("\nAn invalid choice was entered\n")
                     continue
+                if char not in ['l','u','n','s','a','z']:
+                    raise ValueError("\nAn invalid choice was entered\n")
+                    continue
+            
 
             passwordOptionsInputBool = False
         except ValueError as e:
@@ -88,19 +90,28 @@ def generatePassword(userInputValues):
 
 def welcomeMessage():
     print('The Password Generator App\n\n ')
-#Options: \n \
-#Lowercase    (abc)       (L) \n \
-#Uppercase    (ABC)       (U) \n \
-#Number       (123)       (N) \n \
-#Symbol       (!@#$)      (S) \n \
-#Punctuation  (,.{[\\]})   (A) \n \
-#SELECT ALL               (Z) \n')
     return
+
+def requestContinuePrompt():
+    requestContinuePromptResponse = input('Generate another password? [Y/N] \n')
+    requestContinueValid = True
+    while requestContinueValid:
+        if requestContinuePromptResponse[0] == 'y':
+            return True
+        elif requestContinuePromptResponse[0] == 'n':
+            return False
+        else:
+            print("Your input seemed a bit odd, please try again? \n \n")
+            
+
 
 def main():
     welcomeMessage()
-    userInputValues = userInput()
-    generatePassword(userInputValues)
+    continueAppUse = True
+    while(continueAppUse):
+        userInputValues = userInput()
+        generatePassword(userInputValues)
+        continueAppUse = requestContinuePrompt()
     return
 
 if __name__ == "__main__":
